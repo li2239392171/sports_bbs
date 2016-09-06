@@ -1,0 +1,103 @@
+body{
+	background-image:url("../images/bg3.jpg");
+	background-position:center;
+}
+
+.all{
+	padding-top: 60px;
+	width:540px;
+	margin: 0 auto;
+}
+
+a.return:link{
+	color:#2f7;
+	text-decoration:none;
+}
+
+a.return:hover{
+	color:red;
+	text-decoration:underline;
+}
+
+.main{
+	background-color:#fff;
+	height: 540px;
+}
+
+.logo img{
+	margin-left:180px;
+	height: 150px;
+	width:200px;
+}
+
+.form{
+	margin:0px 100px 0px 100px;
+}
+
+#uname{
+	display:block;
+	height:40px;
+	width:340px;
+	margin-bottom: 20px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: blue;
+}
+
+#pw{
+	display:block;
+	height:40px;
+	width:340px;
+	margin-bottom: 20px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: blue;
+}
+
+#repeat-pw{
+	display:block;
+	height:40px;
+	width:340px;
+	margin-bottom: 20px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: blue;
+}
+
+#veri-code{
+	width:150px;
+	height: 50px;
+	margin-bottom: 20px;
+}
+
+.read-agree{
+	margin-bottom: 20px;
+}
+
+.register-button{
+	margin-bottom: 20px;
+}
+
+#button{
+	background-color:red;
+	font-size:18px;
+	color:#fff;
+	width:340px;
+	height:50px;
+	padding: 0;
+	border:none;
+}
+
+.re-login{
+	margin-left: 100px;
+}
+
+a.re-login{
+	color:#00FFCC;
+	text-decoration:none;
+	font-family:'微软雅黑';
+}
+.error{
+	color: #ff0000;
+}
+

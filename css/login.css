@@ -1,0 +1,128 @@
+@charset "UTF-8";
+
+body{
+	background-image:url(../images/bg/3.jpg);
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-position:center;
+}
+
+.login-all{ 
+	padding-top: 60px;
+    width: 540px;
+    margin: 0 auto;
+}
+	
+a.return:link{
+	color:#2f7;
+	text-decoration:none;
+}
+
+a.return:hover{
+	color:red;
+	text-decoration:underline;
+}
+
+a.return_main{
+	margin-left:340px;
+	color:#2f7;
+}
+
+a.return_main:link{
+	text-decoration:none;
+}
+
+a.return_main:hover{
+	color:red;
+	text-decoration:underline;
+}
+
+.login-form{        /*输入框的范围*/
+	background-color: #fff;
+	height: 540px;
+	padding: 40px,80px,30px;  /*上，（右，左），下*/
+	position:relative;
+}
+
+
+.login-logo img{
+	margin-left:180px;
+	height: 150px;
+	width:200px;
+}
+
+.login-in{
+	margin:0px 100px 0px 100px;
+	}
+	
+#username{
+	display:block;
+	height:40px;
+	width:340px;
+	margin-bottom: 30px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: blue;
+}
+
+#password{
+	display:block;
+	height:40px;
+	width:340px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: blue;
+}
+
+.keep-forget{
+	margin:15px 100px 15px 100px;
+}
+
+a.forget-pw{
+	margin:10px 0px 10px 150px;
+	color:black;
+	text-decoration:none;
+}
+
+a.forget-pw:hover{
+	text-decoration:underline;
+}
+
+.login-button{
+	margin:30px 100px 10px 100px;
+}
+
+.button{
+	background-color:red;
+	font-size:18px;
+	color:#fff;
+	width:340px;
+	height:50px;
+	padding: 0;
+	border:none;
+}
+
+.no-account{
+	margin:20px 100px 20px 200px;
+}
+
+a.no-acc{
+	color:blue;
+	text-decoration:none;
+}
+
+a.no-acc:hover{
+	text-decoration:underline;
+}
+
+
+
+
+
+
+
+	
+			
+	
+	
+	

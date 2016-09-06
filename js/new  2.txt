@@ -1,0 +1,119 @@
+<form name="form" id="form" method="post" enctype="multipart/form-data">	
+								
+								<input type="text" name="input_title" id="input_title" placeholder="请填写标题" />
+								<input id="post_content" class="shadow" name="post_content" placeholder="内容" />
+																		
+								<input type="file" class="photo" name="photo" id="photo" value="图片"/>
+								
+								<div class="fakefile">
+								<input type="button" id="submit"  name="submit" class="button white"  value="submit" onclick="submitfile()"/>
+								</div>
+						
+							</form>	
+							
+
+							
+<?php	error_reporting(0); 
+
+				session_start();    //必须！！否则不能得到$_SESSION['current_user']的值！！
+				$username=$_SESSION['current_user'];
+				$title = $_POST['input_title'];
+				$content = $_POST['post_content'];
+				$wtime=date("Y-m-d H:i:s");
+				
+				$filetype = $_FILES["photo"]["type"];
+				$filesize = $_FILES["photo"]["size"];
+				
+				$response = array();
+				
+				if(empty($_FILES["photo"]["name"]))
+				{
+					$sql = "insert into posts(author,title,content,wtime) values('$username','$title','$content','$wtime')";
+					$res = mysql_query($sql,$com);
+				
+					$response['isSuccess'] = "哈哈";
+				}
+				else
+				{
+					if(($filetype == "image/gif")||($filetype == "image/jpeg")||($filetype == "image/png")||($filetype == "image/pjpeg")||($filetype == "image/x-png"))
+					{
+						$key = 0;
+						if ($_FILES["file"]["error"] > 0)
+						{
+							$response['isSuccess'] = false;
+							$response['file_error'] = "error code: ".$_FILES["file"]["error"];
+							$key = 0;
+						}
+						else{
+							if($filesize > 200000){
+								$response['isSuccess'] = false;
+								$response['error_size'] = "图片太大!";
+								$key = 0;
+							}
+							else{
+								$photoname = time().substr($_FILES['photo']["name"], strrpos($_FILES["photo"]["name"],'.'));
+								if(move_upload_file($_FILES["photo"]["tem_name"], "upload/posts/".$photoname)){
+									$key = 1;
+								}
+								else{
+									$response['isSuccess'] = false;
+									$response['error_upload'] = "下载出错！";
+									$key = 0;
+								}
+							}
+						}	
+						if($key == 1){
+							if(!empty($photoname))
+							{
+								$sql = "insert into posts(author,title,content,wtime,picture) values('$username','$title','$content','$wtime','222')";
+								$res = mysql_query($sql,$com);
+
+									$response['isSuccess'] = true;
+
+							}
+							else{
+								$sql = "insert into posts(author,title,content,wtime,picture) values('$username','$title','$content','$wtime','111')";
+								$res = mysql_query($sql,$com);
+
+								$response['isSuccess'] = true;
+				
+							}
+						}						
+					}
+					else{
+						$response['isSuccess'] = false;
+						$response['error_type'] = "文件格式不符合！";
+					}		
+				}
+
+				echo json_encode($response);
+
+?>
+
+function submitfile2(){
+	var formData = new FormData($('#form')[0]);
+	$.ajax({
+		url: 'test.php',
+		type: 'POST',
+		data: formData,
+		dataType: 'JSON',
+		async: false,  
+		cache: false,
+		processData: false,
+		contentType: false
+	}).done(function(ret){
+		if(ret['isSuccess']){
+
+			alert("成功发表");
+		}else{
+			var result = '';
+			result += ret['file_error'] + '  ';
+			result += ret['error_size'] + ' ';
+			result += ret['error_upload'] + ' ';
+			result += ret['error_type']  + ' ';
+			$('#result').html(result);
+			alert('提交失敗');
+		}
+	});
+	return false;
+}							
